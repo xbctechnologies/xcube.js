@@ -13,7 +13,7 @@ Webpack 사용
         - npm install -D babel-loader babel-core babel-preset-env
         - npm install -D webpack-cleanup-plugin
         - npm install -D uglifyjs-webpack-plugin file-loader webpack-cli
-        - npm install -S bignumber.js
+        - npm install -S bignumber.js@v7.2.1
 
 Webpack 빌드
     1. 기본빌드 방법

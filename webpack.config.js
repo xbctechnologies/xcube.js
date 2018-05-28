@@ -17,8 +17,7 @@ module.exports = {
     },
     plugins: [
         new WebpackCleanupPlugin(),
-        // new webpack.optimize.UglifyJsPlugin({sourceMap: true}),
-        // new UglifyJSPlugin()
+        new UglifyJSPlugin()
     ],
     resolve: {
         modules: ['node_modules'],
