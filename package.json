@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "xcube.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "ssh://git@106.251.231.226:2027/alex/xcube.js.git"
@@ -19,6 +16,11 @@
     "file-loader": "^1.1.11",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "^4.9.1",
-    "webpack-cleanup-plugin": "^0.5.1"
+    "webpack-cleanup-plugin": "^0.5.1",
+    "webpack-cli": "^2.1.4"
+  },
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch --progress"
   }
 }
