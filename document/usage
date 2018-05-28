@@ -13,6 +13,7 @@ Webpack 사용
         - npm install -D babel-loader babel-core babel-preset-env
         - npm install -D webpack-cleanup-plugin
         - npm install -D uglifyjs-webpack-plugin file-loader webpack-cli
+        - npm install -S bignumber.js
 
 Webpack 빌드
     1. 기본빌드 방법
@@ -23,6 +24,9 @@ Webpack 빌드
           "watch": "webpack --watch"
         }
     2.1 npm run build
+
+Bower
+    * 트위터에서 만든 프론트 엔드 패키지 관리도구
 
 Z. npm 설명
     * Global 설치 : 터미널에서 모듈의 명령어를 사용할 일이 있다면 Global로 설치합니다.

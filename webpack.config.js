@@ -2,6 +2,8 @@ var webpack = require('webpack');
 var path = require('path');
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
 module.exports = {
     mode: 'none',
     entry: {
@@ -13,8 +15,13 @@ module.exports = {
         // publicPath: '/js/',
         filename: '[name].min.js',
     },
-    // plugins: [
-    //     new WebpackCleanupPlugin(),
-    //     new webpack.optimize.UglifyJsPlugin({sourceMap: true})
-    // ]
+    plugins: [
+        new WebpackCleanupPlugin(),
+        // new webpack.optimize.UglifyJsPlugin({sourceMap: true}),
+        new UglifyJSPlugin()
+    ],
+    resolve: {
+        modules: ['node_modules'],
+        extensions: ['.js'],
+    },
 }

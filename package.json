@@ -22,5 +22,8 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch --progress"
+  },
+  "dependencies": {
+    "bignumber.js": "^7.2.1"
   }
 }
