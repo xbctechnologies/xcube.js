@@ -14,10 +14,12 @@ module.exports = {
         // filename: '[name].[chunkhash].min.js'
         // publicPath: '/js/',
         filename: '[name].js',
+        libraryTarget: 'var',
+        library: 'XCube'
     },
     plugins: [
         new WebpackCleanupPlugin(),
-        // new UglifyJSPlugin()
+        new UglifyJSPlugin()
     ],
     resolve: {
         modules: ['node_modules'],
