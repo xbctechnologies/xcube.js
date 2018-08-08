@@ -24,6 +24,7 @@
     "watch": "webpack --watch --progress"
   },
   "dependencies": {
-    "bignumber.js": "^7.2.1"
+    "bignumber.js": "^7.2.1",
+    "utf8": "^2.1.2"
   }
 }
