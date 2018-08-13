@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "bignumber.js": "^7.2.1",
+    "btoa-atob": "^0.1.2",
     "utf8": "^2.1.2"
   }
 }
