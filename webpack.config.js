@@ -4,6 +4,10 @@ var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
+function a() {
+    path.resolve
+}
+
 module.exports = {
     mode: 'none',
     entry: {
@@ -40,4 +44,7 @@ module.exports = {
             }
         ]
     }
+    // node: {
+    //     fs:"empty"
+    // }
 }
