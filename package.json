@@ -14,6 +14,7 @@
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
     "file-loader": "^1.1.11",
+    "jasmine": "^3.2.0",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "^4.9.1",
     "webpack-cleanup-plugin": "^0.5.1",
@@ -21,7 +22,8 @@
   },
   "scripts": {
     "build": "webpack",
-    "watch": "webpack --watch --progress"
+    "watch": "webpack --watch --progress",
+    "test": "jasmine"
   },
   "dependencies": {
     "bignumber.js": "^7.2.1",
