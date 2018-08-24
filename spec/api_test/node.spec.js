@@ -17,10 +17,10 @@ describe("node >>", function () {
     it("Sync(targetChainId string)", function () {
         var param1 = formatters.inputMustString1(nodeExData.chainId);
 
-        var Sync = function(p1) {
+        var sync = function(p1) {
             return true;
         };
-        expect(Sync(param1)).toEqual(true);
+        expect(sync(param1)).toEqual(true);
     });
     it("Sync error check (First parameter : string type)", function() {
         expect(function () {
@@ -33,10 +33,10 @@ describe("node >>", function () {
     it("IsSync(targetChainId string)", function () {
         var param1 = formatters.inputMustString1(nodeExData.chainId);
 
-        var IsSync = function(p1) {
+        var isSync = function(p1) {
             return true;
         };
-        expect(IsSync(param1)).toEqual(true);
+        expect(isSync(param1)).toEqual(true);
     });
     it("Sync error check (First parameter : string type)", function() {
         expect(function () {
@@ -46,17 +46,54 @@ describe("node >>", function () {
     });
 
     // 3. GetXChainInfo
-    it("GetVersion()", function () {
-        //todo(jh): impl
+    it("GetXChainInfo()", function () {
+        var getXChainInfo = function() {
+            var XChainInfoRes = [{
+                childXChainInfo: [{
+                    childXChainInfo: [{
+                        childXChainInfo: null,
+                        hasAsset: false,
+                        xchainID: "0T.1T.2F"
+                    }],
+                    hasAsset: true,
+                    xchainID: "0T.1T"
+                }, {
+                    childXChainInfo: null,
+                    hasAsset: false,
+                    xchainID: "0T.2F"
+                }, {
+                    childXChainInfo: null,
+                    hasAsset: false,
+                    xchainID: "0T.3F"
+                }],
+                hasAsset: true,
+                xchainID: "0T"
+            }, {
+                childXChainInfo: null,
+                hasAsset: true,
+                xchainID: "0T5"
+            }];
+            // var a = "AAA";
+            // var to_rgb = function (_text, _r, _g, _b) {
+            //     return "\x1b[38;2;" + _r + ";" + _g + ";" + _b + "m" + _text + "\x1b[0m";
+            // };
+            // console.log(to_rgb(a, 31, 32, 33));
+            //
+            // console.log("\x1b[31m"+ "Sample Text"+ "\x1b[0m");
+            //console.log(XChainInfoRes);
+            // console.log(JSON.stringify(XChainInfoRes, null, 4));
+            return XChainInfoRes;
+        };
+        expect(getXChainInfo()).toEqual(responseForm.xChainInfoRes);
     });
 
     // 4. GetVersion
     it("GetVersion()", function () {
-        var GetVersion = function() {
-            var version = "0.1.0-stable";
-            return version;
+        var getVersion = function() {
+            var v = "0.1.0-stable";
+            return v;
         };
-        expect(GetVersion()).toEqual("0.1.0-stable");
+        expect(getVersion()).toEqual("0.1.0-stable");
     });
 
 });

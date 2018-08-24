@@ -2,6 +2,7 @@ var Tx = require('../../lib/xcube/api/tx');
 var tx = new Tx(this);
 var formatters = require('../../lib/xcube/formatters');
 var responseForm = require('../helpers/responseForm');
+var utils = require('../../lib/utils/util');
 
 var txExData = {
     password: "password123",
@@ -139,7 +140,7 @@ describe("tx >>", function () {
                 amount: 333,
                 blockHash: "",
                 blockNumber: 3,
-                payloadBody: "abcd",
+                payloadBody: "eyJhbW91bnQiOjEwfQ==",
                 payloadType: 3,
                 v: "",
                 r: "",
@@ -149,10 +150,8 @@ describe("tx >>", function () {
                 txHash: "",
                 txIndex: 0
             };
-            // todo(jh): add base64 decoding
-            getTxRes.payloadBody = {
-                amount: 10
-            };
+            formatters.outputPayloadBodyFormatter(getTxRes);
+
             return getTxRes;
         };
         expect(getTransaction(param1, param2)).toEqual(responseForm.getTxRes);
@@ -184,7 +183,7 @@ describe("tx >>", function () {
                 amount: 222,
                 blockHash: "",
                 blockNumber: 2,
-                payloadBody: "abcd",
+                payloadBody: "eyJmaWxlIjoiUHFBaEovUUIrNGlEeUhXMlByVFBycUNCVWFGTmtMeEh2Y2lPZFI3amN1RT0ifQ==",
                 payloadType: 2,
                 v: "",
                 r: "",
@@ -195,10 +194,8 @@ describe("tx >>", function () {
                 status: 1,
                 txIndex: 0
             };
-            // todo(jh): add base64 decoding
-            getTxReceiptRes.payloadBody = {
-                file: "PqAhJ/QB+4iDyHW2PrTPrqCBUaFNkLxHvciOdR7jcuE="
-            };
+            formatters.outputPayloadBodyFormatter(getTxReceiptRes);
+
             return getTxReceiptRes;
         };
         expect(getTransactionReceipt(param1, param2)).toEqual(responseForm.getTxReceiptRes);

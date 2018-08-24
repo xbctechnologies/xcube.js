@@ -37,7 +37,7 @@ var getTxRes = {
     amount: 333,
     blockHash: "",
     blockNumber: 3,
-    payloadBody: {
+    payloadBody: { // base64 = eyJhbW91bnQiOjEwfQ==
         amount: 10
     },
     payloadType: 3,
@@ -53,8 +53,8 @@ var getTxReceiptRes = {
     amount: 222,
     blockHash: "",
     blockNumber: 2,
-    payloadBody: {
-        file: "PqAhJ/QB+4iDyHW2PrTPrqCBUaFNkLxHvciOdR7jcuE="
+    payloadBody: { // base64 = eyJmaWxlIjoiUHFBaEovUUIrNGlEeUhXMlByVFBycUNCVWFGTmtMeEh2Y2lPZFI3amN1RT0ifQ==
+        file: 'PqAhJ/QB+4iDyHW2PrTPrqCBUaFNkLxHvciOdR7jcuE='
     },
     payloadType: 2,
     v: "",
@@ -72,6 +72,31 @@ var setOfBlockRes = {
         "9DE91697E8FA30A7424E229121782FC8CC62ABA0"
     ]
 };
+var xChainInfoRes = [{
+    childXChainInfo: [{
+        childXChainInfo: [{
+            childXChainInfo: null,
+            hasAsset: false,
+            xchainID: "0T.1T.2F"
+        }],
+        hasAsset: true,
+        xchainID: "0T.1T"
+    }, {
+        childXChainInfo: null,
+        hasAsset: false,
+        xchainID: "0T.2F"
+    }, {
+        childXChainInfo: null,
+        hasAsset: false,
+        xchainID: "0T.3F"
+    }],
+    hasAsset: true,
+    xchainID: "0T"
+}, {
+    childXChainInfo: null,
+    hasAsset: true,
+    xchainID: "0T5"
+}];
 
 module.exports = {
     blockRes: blockRes,
@@ -84,5 +109,6 @@ module.exports = {
     transactionSigRes: transactionSigRes,
     getTxRes: getTxRes,
     getTxReceiptRes: getTxReceiptRes,
-    setOfBlockRes: setOfBlockRes
+    setOfBlockRes: setOfBlockRes,
+    xChainInfoRes: xChainInfoRes
 };
