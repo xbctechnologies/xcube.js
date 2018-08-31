@@ -3,6 +3,8 @@ var tx = new Tx(this);
 var formatters = require('../../lib/xcube/formatters');
 var responseForm = require('../helpers/responseForm');
 var utils = require('../../lib/utils/util');
+var TxReq = require('../../lib/xcube/apireq/tx_req');
+var Example = require('../../lib/xcube/api/example');
 
 var txExData = {
     password: "password123",
@@ -31,7 +33,7 @@ describe("tx >>", function () {
     it("SendTransaction error check (First parameter : Object type)", function() {
         expect(function () {
             tx.sendTransaction(123);
-        }).toThrowError(formatters.errStrMap.inputMustObject1);
+        }).toThrowError(formatters.errStrMap.inputFeeString);
     });
 
     // 2. Delegating
@@ -237,6 +239,22 @@ describe("tx >>", function () {
         expect(function () {
             tx.checkOriginal(txExData.chainId, 123);
         }).toThrowError(formatters.errStrMap.inputFilePath2);
+    });
+
+    // test
+    it("test", function () {
+        var ex = Example;
+        // console.log(Example);
+
+        var p = ex.tx(2, true);
+        formatters.inputSendTransaction1(p);
+        // ex.tx(1, false);
+        // ex.info();
+
+        // var txReq = new TxReq.TxRequest(10);
+        //
+        // var forView = JSON.stringify(txReq, null, 3);
+        // console.log(forView);
     });
 
 });
