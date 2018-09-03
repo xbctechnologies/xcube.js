@@ -173,12 +173,18 @@ describe("account >>", function () {
         expect(function () {
             account.getBalance();
             account.getBalance(123);
-        }).toThrowError(formatters.errStrMap.inputMustHexString1);
+        }).toThrowError(formatters.errStrMap.inputMustString1);
     });
-    it("GetBalance error check (First parameter : odd length)", function() {
+    it("GetBalance error check (Second parameter : odd length)", function() {
         expect(function () {
-            account.getBalance(accountExData.wrongAddress);
-        }).toThrowError(formatters.errStrMap.inputMustHexStringOdd1);
+            account.getBalance(accountExData.chainId, accountExData.wrongAddress);
+        }).toThrowError(formatters.errStrMap.inputMustHexStringOdd2);
+    });
+    it("GetBalance error check (Third parameter : atxType)", function(){
+        expect(function () {
+            account.getBalance(accountExData.chainId, accountExData.rightAddress, "sdf");
+        }).toThrowError(formatters.errStrMap.inputMustAtxtype3);
+        // formatters.inputMustAtxtype3("microatx");
     });
 
     // 8. GetBondingAmount
@@ -198,12 +204,17 @@ describe("account >>", function () {
         expect(function () {
             account.getBondingAmount();
             account.getBondingAmount(123);
-        }).toThrowError(formatters.errStrMap.inputMustHexString1);
+        }).toThrowError(formatters.errStrMap.inputMustString1);
     });
     it("GetBondingAmount error check (First parameter : odd length)", function() {
         expect(function () {
-            account.getBondingAmount(accountExData.wrongAddress);
-        }).toThrowError(formatters.errStrMap.inputMustHexStringOdd1);
+            account.getBondingAmount(accountExData.chainId, accountExData.wrongAddress);
+        }).toThrowError(formatters.errStrMap.inputMustHexStringOdd2);
+    });
+    it("GetBondingAmount error check (Third parameter : atxType)", function(){
+        expect(function () {
+            account.getBondingAmount(accountExData.chainId, accountExData.rightAddress, "sdf");
+        }).toThrowError(formatters.errStrMap.inputMustAtxtype3);
     });
 
 });

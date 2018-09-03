@@ -248,7 +248,7 @@ describe("tx >>", function () {
 
         // ex.info()
         // ex.tx(10);
-        ex.tx(10, true);
+        // ex.tx(10, true);
         // formatters.inputSendTransaction1(p);
 
 
