@@ -246,10 +246,10 @@ describe("tx >>", function () {
         var ex = Example;
         // console.log(Example);
 
-        var p = ex.tx(1, true);
-        formatters.inputSendTransaction1(p);
-        // ex.tx(1, false);
-        // ex.info();
+        ex.tx(10);
+        ex.tx(10, true);
+        // formatters.inputSendTransaction1(p);
+
 
         // var txReq = new TxReq.TxRequest(10);
         //
