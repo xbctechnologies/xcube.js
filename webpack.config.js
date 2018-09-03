@@ -4,10 +4,6 @@ var WebpackCleanupPlugin = require('webpack-cleanup-plugin-next');
 
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-function a() {
-    path.resolve
-}
-
 module.exports = {
     mode: 'none',
     entry: {
