@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
-var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+var WebpackCleanupPlugin = require('webpack-cleanup-plugin-next');
 
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
