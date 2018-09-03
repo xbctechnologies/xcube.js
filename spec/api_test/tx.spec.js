@@ -246,7 +246,8 @@ describe("tx >>", function () {
         var ex = Example;
         // console.log(Example);
 
-        ex.tx(10);
+        // ex.info()
+        // ex.tx(10);
         ex.tx(10, true);
         // formatters.inputSendTransaction1(p);
 
