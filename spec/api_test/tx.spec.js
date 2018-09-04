@@ -5,6 +5,7 @@ var responseForm = require('../helpers/responseForm');
 var utils = require('../../lib/utils/util');
 var TxReq = require('../../lib/xcube/apireq/tx_req');
 var Example = require('../../lib/xcube/api/example');
+var BigNumber = require('bignumber.js');
 
 var txExData = {
     password: "password123",
@@ -33,7 +34,7 @@ describe("tx >>", function () {
     it("SendTransaction error check (First parameter : Object type)", function() {
         expect(function () {
             tx.sendTransaction(123);
-        }).toThrowError(formatters.errStrMap.inputFeeString);
+        }).toThrowError(formatters.errStrMap.inputMustObject1);
     });
 
     // 2. Delegating
@@ -243,19 +244,124 @@ describe("tx >>", function () {
 
     // test
     it("test", function () {
-        var ex = Example;
-        // console.log(Example);
-
-        // ex.info()
-        // ex.tx(10);
-        // ex.tx(10, true);
-        // formatters.inputSendTransaction1(p);
-
-
-        // var txReq = new TxReq.TxRequest(10);
+        // var ex = Example;
+        // var p = ex.tx(8, true, true);
         //
-        // var forView = JSON.stringify(txReq, null, 3);
-        // console.log(forView);
+        // formatters.inputSendTransaction1(p);
     });
 
+});
+
+describe("tx payloadBody >>", function () {
+    it("payloadType1", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData = ex.tx(1, true, true);
+
+            sampleData.payloadBody.input = 1;
+            tx.sendTransaction(sampleData);
+        }).toThrowError("payloadBody.input should be string type.");
+    });
+    // todo(jh):
+    // it("payloadType2", function() {
+    //     expect(function() {
+    //         var ex = Example;
+    //         var sampleData = ex.tx(2, true);
+    //
+    //         sampleData.payloadBody.input = 1;
+    //         tx.sendTransaction(sampleData);
+    //     }).toThrowError("Input should be string type.");
+    // });
+    it("payloadType3", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData = ex.tx(3, true, true);
+            sampleData.payloadBody.amount = "sdf";
+            tx.sendTransaction(sampleData);
+        }).toThrowError("payloadBody.amount should be number type.");
+    });
+    it("payloadType4", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData = ex.tx(4, true, true);
+            sampleData.payloadBody.amount = "sdf";
+            tx.sendTransaction(sampleData);
+        }).toThrowError("payloadBody.amount should be number type.");
+    });
+
+    // type 5
+    it("payloadType5 (amount)", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData = ex.tx(5, true, true);
+            sampleData.payloadBody.amount = "sdf";
+            tx.sendTransaction(sampleData);
+        }).toThrowError("payloadBody.amount should be number type.");
+    });
+    it("payloadType5 (validatorAccountAddr)", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData2 = ex.tx(5, true, true);
+            sampleData2.payloadBody.validatorAccountAddr = txExData.wrongAddress;
+            tx.sendTransaction(sampleData2);
+        }).toThrowError("Fail decode: odd length hex string.\npayloadBody.validatorAccountAddr should be even length hex string.");
+    });
+
+    // type 6
+    it("payloadType6 (amount)", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData = ex.tx(6, true, true);
+            sampleData.payloadBody.amount = "sdf";
+            tx.sendTransaction(sampleData);
+        }).toThrowError("payloadBody.amount should be number type.");
+    });
+    it("payloadType6 (validatorAccountAddr)", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData2 = ex.tx(6, true, true);
+            sampleData2.payloadBody.validatorAccountAddr = txExData.wrongAddress;
+            tx.sendTransaction(sampleData2);
+        }).toThrowError("Fail decode: odd length hex string.\npayloadBody.validatorAccountAddr should be even length hex string.");
+    });
+
+    // type 7
+    it("payloadType7 ", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData = ex.tx(7, true, true);
+            sampleData.payloadBody.blockNumsFreezingValidator = "sdf";
+            tx.sendTransaction(sampleData);
+        }).toThrowError("payloadBody.blockNumsFreezingValidator should be number type.");
+    });
+
+    // type 8
+    it("payloadType8 ", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData = ex.tx(8, true, true);
+            sampleData.payloadBody.yesOrNo = 123;
+            tx.sendTransaction(sampleData);
+        }).toThrowError("payloadBody.yesOrNo should be boolean type. (true / false)");
+    });
+
+    // type 9
+    it("payloadType9 ", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData = ex.tx(9, true, true);
+            sampleData.payloadBody = 123;
+            tx.sendTransaction(sampleData);
+        }).toThrowError("PayloadBody should be object type.");
+    });
+
+    // type 10
+    it("payloadType10 ", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData = ex.tx(10, true, true);
+            sampleData.payloadBody = 123;
+            tx.sendTransaction(sampleData);
+        }).toThrowError("PayloadBody should be object type.");
+    });
 });
