@@ -1,3 +1,5 @@
+var BigNumber = require('bignumber.js');
+
 var blockRes = {
     blockHash: "3D395FB9340AB345C2312ED2",
     blockNo: 922337203683,
@@ -36,7 +38,7 @@ var transactionSigRes = {
 var getTxRes = {
     amount: 333,
     blockHash: "",
-    blockNumber: 3,
+    blockNumber: new BigNumber(3),
     payloadBody: { // base64 = eyJhbW91bnQiOjEwfQ==
         amount: 10
     },
@@ -52,7 +54,7 @@ var getTxRes = {
 var getTxReceiptRes = {
     amount: 222,
     blockHash: "",
-    blockNumber: 2,
+    blockNumber: new BigNumber(2),
     payloadBody: { // base64 = eyJmaWxlIjoiUHFBaEovUUIrNGlEeUhXMlByVFBycUNCVWFGTmtMeEh2Y2lPZFI3amN1RT0ifQ==
         file: 'PqAhJ/QB+4iDyHW2PrTPrqCBUaFNkLxHvciOdR7jcuE='
     },
