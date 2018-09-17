@@ -246,9 +246,10 @@ describe("tx >>", function () {
     it("test", function () {
         var ex = Example;
         var a = ex.tx(7, true,true);
+        // a.payloadBody.minGRProposalTxFee = "12d3";
 
         tx.sendTransaction(a)
-        console.log(a)
+
 
         // a.payloadBody=1;
         // console.log("p=", a);
