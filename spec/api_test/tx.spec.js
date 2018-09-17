@@ -245,9 +245,10 @@ describe("tx >>", function () {
     // test
     it("test", function () {
         var ex = Example;
-        var a = ex.tx(4, true);
+        var a = ex.tx(7, true,true);
 
-        // tx.sendTransaction(a)
+        tx.sendTransaction(a)
+        console.log(a)
 
         // a.payloadBody=1;
         // console.log("p=", a);
