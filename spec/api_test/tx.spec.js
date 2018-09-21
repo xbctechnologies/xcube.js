@@ -244,32 +244,6 @@ describe("tx >>", function () {
 
     // test
     it("test", function () {
-        var ex = Example;
-        var a = ex.tx(7, true,true);
-        // a.payloadBody.minGRProposalTxFee = "12d3";
-
-        tx.sendTransaction(a)
-
-
-        // a.payloadBody=1;
-        // console.log("p=", a);
-
-        // tx.sendTransaction({
-        //     "amount": 0,
-        //     "fee": 10000000000000000000000,
-        //     "isSync": false,
-        //     "payloadBody": {
-        //         "amount": "9223372036854775808"
-        //     },
-        //     "payloadType": 3,
-        //     "receiver": "eba3f7d6983141ecbca0319aed800458d9a3f2d5",
-        //     "sender": "eba3f7d6983141ecbca0319aed800458d9a3f2d5",
-        //     "targetChainId": "0T",
-        //     "time": null
-        // });
-        // tx.getTransaction("A","AD");
-
-
         /*var ex = Example;
         var p = ex.tx(3, true, true);
         p.payloadBody.amount = "10000000000000000000000";
@@ -301,50 +275,50 @@ describe("tx >>", function () {
 });
 
 describe("tx payloadBody >>", function () {
-    // it("payloadType1", function() {
-    //     expect(function() {
-    //         var ex = Example;
-    //         var sampleData = ex.tx(1, true, true);
-    //
-    //         sampleData.payloadBody.input = 1;
-    //         tx.sendTransaction(sampleData);
-    //     }).toThrowError("payloadBody.input should be string type.");
-    // });
-    // it("payloadType2", function() {
-    //     expect(function() {
-    //         var ex = Example;
-    //         var sampleData = ex.tx(2, true);
-    //
-    //         sampleData.payloadBody.input = 1;
-    //         tx.sendTransaction(sampleData);
-    //     }).toThrowError("Input should be string type.");
-    // });
-    // it("payloadType3", function() {
-    //     expect(function() {
-    //         var ex = Example;
-    //         var sampleData = ex.tx(3, true, true);
-    //         sampleData.payloadBody.amount = "sdf";
-    //         tx.sendTransaction(sampleData);
-    //     }).toThrowError("payloadBody.amount should be number type.");
-    // });
-    // it("payloadType4", function() {
-    //     expect(function() {
-    //         var ex = Example;
-    //         var sampleData = ex.tx(4, true, true);
-    //         sampleData.payloadBody.amount = "sdf";
-    //         tx.sendTransaction(sampleData);
-    //     }).toThrowError("payloadBody.amount should be number type.");
-    // });
+    it("payloadType1", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData = ex.tx(1, true, true);
 
-    // type 5
-    // it("payloadType5 (amount)", function() {
-    //     expect(function() {
-    //         var ex = Example;
-    //         var sampleData = ex.tx(5, true, true);
-    //         sampleData.payloadBody.amount = "sdf";
-    //         tx.sendTransaction(sampleData);
-    //     }).toThrowError("payloadBody.amount should be number type.");
-    // });
+            sampleData.payloadBody.input = 1;
+            tx.sendTransaction(sampleData);
+        }).toThrowError("payloadBody.input should be string type.");
+    });
+    it("payloadType2", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData = ex.tx(2, true, true);
+
+            sampleData.payloadBody.op = "sdf";
+            tx.sendTransaction(sampleData);
+        }).toThrowError("payloadBody.op should be number type.");
+    });
+    it("payloadType3", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData = ex.tx(3, true, true);
+            sampleData.payloadBody.amount = "sdf";
+            tx.sendTransaction(sampleData);
+        }).toThrowError("payloadBody.amount should be a string in numeric form. (ex: '1000')");
+    });
+    it("payloadType4", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData = ex.tx(4, true, true);
+            sampleData.payloadBody.amount = "sdf";
+            tx.sendTransaction(sampleData);
+        }).toThrowError("payloadBody.amount should be a string in numeric form. (ex: '1000')");
+    });
+
+    //type 5
+    it("payloadType5 (amount)", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData = ex.tx(5, true, true);
+            sampleData.payloadBody.amount = "sdf";
+            tx.sendTransaction(sampleData);
+        }).toThrowError("payloadBody.amount should be a string in numeric form. (ex: '1000')");
+    });
     it("payloadType5 (validatorAccountAddr)", function() {
         expect(function() {
             var ex = Example;
@@ -355,14 +329,14 @@ describe("tx payloadBody >>", function () {
     });
 
     // type 6
-    // it("payloadType6 (amount)", function() {
-    //     expect(function() {
-    //         var ex = Example;
-    //         var sampleData = ex.tx(6, true, true);
-    //         sampleData.payloadBody.amount = "sdf";
-    //         tx.sendTransaction(sampleData);
-    //     }).toThrowError("payloadBody.amount should be number type.");
-    // });
+    it("payloadType6 (amount)", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData = ex.tx(6, true, true);
+            sampleData.payloadBody.amount = "sdf";
+            tx.sendTransaction(sampleData);
+        }).toThrowError("payloadBody.amount should be a string in numeric form. (ex: '1000')");
+    });
     it("payloadType6 (validatorAccountAddr)", function() {
         expect(function() {
             var ex = Example;
@@ -373,22 +347,22 @@ describe("tx payloadBody >>", function () {
     });
 
     // type 7
-    // it("payloadType7 ", function() {
-    //     expect(function() {
-    //         var ex = Example;
-    //         var sampleData = ex.tx(7, true, true);
-    //         sampleData.payloadBody.blockNumsFreezingValidator = "sdf";
-    //         tx.sendTransaction(sampleData);
-    //     }).toThrowError("payloadBody.blockNumsFreezingValidator should be number type.");
-    // });
-    // it("payloadType7 ", function() {
-    //     expect(function() {
-    //         var ex = Example;
-    //         var sampleData = ex.tx(7, true, true);
-    //         sampleData.payloadBody.currentReflection.blockNumsForVoting = "sdf";
-    //         tx.sendTransaction(sampleData);
-    //     }).toThrowError("payloadBody.currentReflection.blockNumsForVoting should be number type.");
-    // });
+    it("payloadType7 ", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData = ex.tx(7, true, true);
+            sampleData.payloadBody.blockNumsFreezingValidator = "sdf";
+            tx.sendTransaction(sampleData);
+        }).toThrowError("payloadBody.blockNumsFreezingValidator should be a string in numeric form. (ex: '1000')");
+    });
+    it("payloadType7 ", function() {
+        expect(function() {
+            var ex = Example;
+            var sampleData = ex.tx(7, true, true);
+            sampleData.payloadBody.currentReflection.blockNumsForVoting = "sdf";
+            tx.sendTransaction(sampleData);
+        }).toThrowError("payloadBody.currentReflection.blockNumsForVoting should be a string in numeric form. (ex: '1000')");
+    });
 
     // type 8
     it("payloadType8 ", function() {
