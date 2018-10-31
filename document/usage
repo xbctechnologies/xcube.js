@@ -11,7 +11,7 @@ Webpack 사용
         - sudo npm install -g webpack-cli
     2. npm 이용하여 프로젝트 초기화 및 플러그인 설치 (이미 되어 있으므로 할필요 없음.)
         - npm init
-        - npm install -D babel-loader babel-core babel-preset-env
+        - npm install -D babel-loader babel-core babel-preset-env webpack-shell-plugin
         - npm install -D webpack-cleanup-plugin
         - npm install -D uglifyjs-webpack-plugin file-loader webpack-cli
         - npm install -S bignumber.js@v7.2.1

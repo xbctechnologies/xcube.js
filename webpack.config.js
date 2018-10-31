@@ -3,6 +3,8 @@ const path = require('path');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin-next');
 const nodeEnv = process.env.ENV_VAR
 
+const WebpackShellPlugin = require('webpack-shell-plugin');
+
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
@@ -48,6 +50,7 @@ module.exports = (env, argv) => {
     if (nodeEnv === 'alex') {
         config.output.path = '/Users/alex/office/workspace/xblockchain/xblockchain/src/github.com/xblocksys/go-xblockchain/internal/jsve/deps'
         config.plugins = [config.plugins[config.plugins.length - 1]]
+        config.plugins.push(new WebpackShellPlugin({onBuildEnd:['make -C /Users/alex/office/workspace/xblockchain/xblockchain/src/github.com/xblocksys/go-xblockchain xnode-jsve-build']}))
     }
 
     return config
