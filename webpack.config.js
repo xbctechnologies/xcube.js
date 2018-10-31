@@ -1,10 +1,11 @@
-var webpack = require('webpack');
-var path = require('path');
-var WebpackCleanupPlugin = require('webpack-cleanup-plugin-next');
+const webpack = require('webpack');
+const path = require('path');
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin-next');
+const nodeEnv = process.env.ENV_VAR
 
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-module.exports = {
+const config = {
     mode: 'none',
     entry: {
         xcube: "./lib/xcube.js"
@@ -40,4 +41,14 @@ module.exports = {
             }
         ]
     }
+};
+
+console.log("Mode : " + nodeEnv)
+module.exports = (env, argv) => {
+    if (nodeEnv === 'alex') {
+        config.output.path = '/Users/alex/office/workspace/xblockchain/xblockchain/src/github.com/xblocksys/go-xblockchain/internal/jsve/deps'
+        config.plugins = [config.plugins[config.plugins.length - 1]]
+    }
+
+    return config
 };

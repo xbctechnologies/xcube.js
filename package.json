@@ -22,7 +22,8 @@
     "webpack-cli": "^3.1.0"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "ENV_VAR=production webpack",
+    "build-alex": "ENV_VAR=alex webpack",
     "watch": "webpack --watch --progress",
     "test": "jasmine"
   },
