@@ -1,0 +1,16 @@
+//트랜잭션 서명
+originTxObj = txGuide.tx(2, "obj");
+copyTxObj = txGuide.tx(2, "obj");
+copyTxObj.time = originTxObj.time;
+sign = tx.signTransaction(originTxObj);
+copyTxObj.r = sign.r;
+copyTxObj.s = sign.s;
+copyTxObj.v = sign.v;
+tx.sendTransaction(copyTxObj);
+
+//원본파일 체크
+txObj = txGuide.tx(2, "obj");
+txFilePath = txObj.payloadBody.filePath;
+txRes = tx.sendTransaction(txObj);
+txGuide.tx(1, "send");  //바로 실행하면 proof 블록이 생성되기 전이라 확정이 안된상태라 통과 안됨
+tx.checkOriginal(txObj.targetChainId, txRes.dataAccountAddr, txFilePath)
