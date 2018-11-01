@@ -4,7 +4,7 @@ var formatters = require('../../lib/xcube/formatters');
 var responseForm = require('../helpers/responseForm');
 var utils = require('../../lib/utils/util');
 var TxReq = require('../../lib/xcube/apireq/tx_req');
-var Example = require('../../lib/xcube/api/example');
+var TxGuide = require('../../lib/xcube/api/txGuide');
 var BigNumber = require('bignumber.js');
 
 var txExData = {
@@ -277,7 +277,7 @@ describe("tx >>", function () {
 describe("tx payloadBody >>", function () {
     it("payloadType1", function() {
         expect(function() {
-            var ex = Example;
+            var ex = TxGuide;
             var sampleData = ex.tx(1, true, true);
 
             sampleData.payloadBody.input = 1;
@@ -286,7 +286,7 @@ describe("tx payloadBody >>", function () {
     });
     it("payloadType2", function() {
         expect(function() {
-            var ex = Example;
+            var ex = TxGuide;
             var sampleData = ex.tx(2, true, true);
 
             sampleData.payloadBody.op = "sdf";
@@ -295,7 +295,7 @@ describe("tx payloadBody >>", function () {
     });
     it("payloadType3", function() {
         expect(function() {
-            var ex = Example;
+            var ex = TxGuide;
             var sampleData = ex.tx(3, true, true);
             sampleData.payloadBody.amount = "sdf";
             tx.sendTransaction(sampleData);
@@ -303,7 +303,7 @@ describe("tx payloadBody >>", function () {
     });
     it("payloadType4", function() {
         expect(function() {
-            var ex = Example;
+            var ex = TxGuide;
             var sampleData = ex.tx(4, true, true);
             sampleData.payloadBody.amount = "sdf";
             tx.sendTransaction(sampleData);
@@ -313,7 +313,7 @@ describe("tx payloadBody >>", function () {
     //type 5
     it("payloadType5 (amount)", function() {
         expect(function() {
-            var ex = Example;
+            var ex = TxGuide;
             var sampleData = ex.tx(5, true, true);
             sampleData.payloadBody.amount = "sdf";
             tx.sendTransaction(sampleData);
@@ -321,7 +321,7 @@ describe("tx payloadBody >>", function () {
     });
     it("payloadType5 (validatorAccountAddr)", function() {
         expect(function() {
-            var ex = Example;
+            var ex = TxGuide;
             var sampleData2 = ex.tx(5, true, true);
             sampleData2.payloadBody.validatorAccountAddr = txExData.wrongAddress;
             tx.sendTransaction(sampleData2);
@@ -331,7 +331,7 @@ describe("tx payloadBody >>", function () {
     // type 6
     it("payloadType6 (amount)", function() {
         expect(function() {
-            var ex = Example;
+            var ex = TxGuide;
             var sampleData = ex.tx(6, true, true);
             sampleData.payloadBody.amount = "sdf";
             tx.sendTransaction(sampleData);
@@ -339,7 +339,7 @@ describe("tx payloadBody >>", function () {
     });
     it("payloadType6 (validatorAccountAddr)", function() {
         expect(function() {
-            var ex = Example;
+            var ex = TxGuide;
             var sampleData2 = ex.tx(6, true, true);
             sampleData2.payloadBody.validatorAccountAddr = txExData.wrongAddress;
             tx.sendTransaction(sampleData2);
@@ -349,7 +349,7 @@ describe("tx payloadBody >>", function () {
     // type 7
     it("payloadType7 ", function() {
         expect(function() {
-            var ex = Example;
+            var ex = TxGuide;
             var sampleData = ex.tx(7, true, true);
             sampleData.payloadBody.blockNumsFreezingValidator = "sdf";
             tx.sendTransaction(sampleData);
@@ -357,7 +357,7 @@ describe("tx payloadBody >>", function () {
     });
     it("payloadType7 ", function() {
         expect(function() {
-            var ex = Example;
+            var ex = TxGuide;
             var sampleData = ex.tx(7, true, true);
             sampleData.payloadBody.currentReflection.blockNumsForVoting = "sdf";
             tx.sendTransaction(sampleData);
@@ -367,7 +367,7 @@ describe("tx payloadBody >>", function () {
     // type 8
     it("payloadType8 ", function() {
         expect(function() {
-            var ex = Example;
+            var ex = TxGuide;
             var sampleData = ex.tx(8, true, true);
             sampleData.payloadBody.yesOrNo = 123;
             tx.sendTransaction(sampleData);
@@ -377,7 +377,7 @@ describe("tx payloadBody >>", function () {
     // type 9
     it("payloadType9 ", function() {
         expect(function() {
-            var ex = Example;
+            var ex = TxGuide;
             var sampleData = ex.tx(9, true, true);
             sampleData.payloadBody = 123;
             tx.sendTransaction(sampleData);
@@ -387,7 +387,7 @@ describe("tx payloadBody >>", function () {
     // type 10
     it("payloadType10 ", function() {
         expect(function() {
-            var ex = Example;
+            var ex = TxGuide;
             var sampleData = ex.tx(10, true, true);
             sampleData.payloadBody = 123;
             tx.sendTransaction(sampleData);
