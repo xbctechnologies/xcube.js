@@ -48,9 +48,9 @@ const config = {
 console.log("Mode : " + nodeEnv)
 module.exports = (env, argv) => {
     if (nodeEnv === 'alex') {
-        config.output.path = '/Users/alex/office/workspace/xblockchain/xblockchain/src/github.com/xblocksys/go-xblockchain/internal/jsve/deps'
+        config.output.path = '/Users/alex/office/workspace/xblockchain/xblockchain/src/github.com/xbctechnologies/go-xblockchain/internal/jsve/deps'
         config.plugins = [config.plugins[config.plugins.length - 1]]
-        config.plugins.push(new WebpackShellPlugin({onBuildEnd:['make -C /Users/alex/office/workspace/xblockchain/xblockchain/src/github.com/xblocksys/go-xblockchain xnode-jsve-build']}))
+        config.plugins.push(new WebpackShellPlugin({onBuildEnd:['make -C /Users/alex/office/workspace/xblockchain/xblockchain/src/github.com/xbctechnologies/go-xblockchain xnode-jsve-build']}))
     }
 
     return config
